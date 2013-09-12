@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.michelle.scratch"
+    package="mnaylor.as1"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -15,19 +15,18 @@
         android:theme="@style/AppBaseTheme" >
         
         <activity
-            android:name="com.michelle.scratch.MainActivity"
-            android:label="@string/app_name" >
+            android:name="mnaylor.as1.MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
         <activity
-            android:name="com.michelle.scratch.DisplayMessageActivity"
+            android:name="mnaylor.as1.DisplayMessageActivity"
             android:label="@string/title_activity_display_message"
-            android:parentActivityName="com.michelle.scratch.MainActivity" >
+            android:parentActivityName="mnaylor.as1.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.michelle.scratch.MainActivity" />
