@@ -1,0 +1,5 @@
+This program is the result of following the android development tutorial at
+http://developer.android.com/training/index.html .
+
+The program allows for the entry of text, and the display of text in
+another view.  It also implements a simple action bar.
