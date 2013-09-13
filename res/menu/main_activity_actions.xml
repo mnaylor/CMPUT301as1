@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+Based on Android tutorial published under Creative Commons
+http://developer.android.com/training/index.html
+ 
+Published under GPL-V2
+http://www.gnu.org/licenses/gpl-2.0.html -->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <!-- Search, should appear as action button -->
     <item android:id="@+id/action_search"

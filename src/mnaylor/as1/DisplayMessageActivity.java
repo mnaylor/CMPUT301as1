@@ -1,3 +1,10 @@
+/** Based on Android tutorial published under Creative Commons
+* http://developer.android.com/training/index.html
+* 
+* Published under GPL-V2
+* http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
 package mnaylor.as1;
 
 import mnaylor.as1.R;
