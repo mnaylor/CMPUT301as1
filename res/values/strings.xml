@@ -2,8 +2,11 @@
 <resources>
 
     <string name="app_name">mnaylor.as1</string>
-    <string name="edit_message">Enter a message</string>
-    <string name="button_send">Send</string>
+    <string name="edit_subject">Enter note subject</string>
+    <string name="subject">Subject:</string>
+    <string name="date">Date:</string>
+    <string name="edit_content">Enter note content</string>
+    <string name="button_new">Create Note</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_display_message">My Message</string>
     <string name="action_search">Search</string>

@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.EditText;
 
 public class MainActivity extends Activity {
-	public final static String EXTRA_MESSAGE = "com.michelle.scratch.MESSAGE";
+	public final static String EXTRA_MESSAGE = "mnaylor.as1.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +49,12 @@ public class MainActivity extends Activity {
         }
     }
     
-    /** Called when the user clicks the Send button */
-    public void sendMessage(View view) {
-    	Intent intent = new Intent(this, DisplayMessageActivity.class);
+    /** Called when the user clicks the new message button */
+    public void newMessage(View view) {
+    	Intent intent = new Intent(this, NewNoteActivity.class);
     	EditText editText = (EditText) findViewById(R.id.edit_message);
-    	String message = editText.getText().toString();
-    	intent.putExtra(EXTRA_MESSAGE, message);
+    	String subject = editText.getText().toString();
+    	intent.putExtra(EXTRA_MESSAGE, subject);
     	startActivity(intent);
     }
     

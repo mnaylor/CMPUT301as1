@@ -15,11 +15,11 @@ http://www.gnu.org/licenses/gpl-2.0.html -->
     	android:layout_width="0dp"
     	android:layout_height="wrap_content"
     	android:layout_weight="1"
-    	android:hint="@string/edit_message" />
+    	android:hint="@string/edit_subject" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_send"
-    	android:onClick="sendMessage" />
+        android:text="@string/button_new"
+    	android:onClick="newMessage" />
     
 </LinearLayout>

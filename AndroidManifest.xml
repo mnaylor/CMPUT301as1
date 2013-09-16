@@ -32,12 +32,12 @@ http://www.gnu.org/licenses/gpl-2.0.html -->
         </activity>
         
         <activity
-            android:name="mnaylor.as1.DisplayMessageActivity"
+            android:name="mnaylor.as1.NewNoteActivity"
             android:label="@string/title_activity_display_message"
             android:parentActivityName="mnaylor.as1.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.michelle.scratch.MainActivity" />
+                android:value="mnaylor.as1.MainActivity" />
         </activity>
         
     </application>

@@ -5,3 +5,12 @@ All code comes directly from the tutorial.
 
 The program allows for the entry of text, and the display of text in
 another view.  It also implements a simple action bar.
+
+TODO:
+- save notes - automatic save
+- add multiple notes
+- view multiple notes
+- delete notes
+- add note stats to actionbar
+- spell check
+
