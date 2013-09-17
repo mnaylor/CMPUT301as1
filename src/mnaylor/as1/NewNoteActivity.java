@@ -7,6 +7,7 @@
 
 package mnaylor.as1;
 
+import mnaylor.db.Db;
 import note.Note;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -20,38 +21,47 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 public class NewNoteActivity extends Activity {
+	Db note_db;
 	
 	@SuppressLint("New API")
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-     // Get the subject from the intent
-     Intent intent = getIntent();
-     String subject = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        // Get the subject from the intent
+        Intent intent = getIntent();
+        String subject = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
-     Note new_note = new Note(subject);
+        Note new_note = new Note(subject);
 
-     // Set the text view as the activity layout
-     setContentView(R.layout.activity_display_note);
+        // Set the text view as the activity layout
+        setContentView(R.layout.activity_display_note);
 
-     // Display subject and date
-     EditText subject_line = (EditText) findViewById(R.id.subject);
-     subject_line.setText(new_note.subject);
+        // Display subject and date
+        EditText subject_line = (EditText) findViewById(R.id.subject);
+        subject_line.setText(new_note.subject);
+        EditText date_line = (EditText) findViewById(R.id.date);
+        date_line.setText(new_note.note_date);
      
-     EditText date_line = (EditText) findViewById(R.id.date);
-     date_line.setText(new_note.note_date);
-     
-     // TODO: add note to database
-     
-     
-     
-     // Make sure we're running on Honeycomb or higher to use ActionBar APIs
-     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-    	 // Show the Up button in the action bar.
-    	 getActionBar().setDisplayHomeAsUpEnabled(true);
-       }	
+        // TODO: add note to database
+        note_db = new Db(this);
+        note_db.open();
+        
+        save_to_db(new_note);
+        
+        // Make sure we're running on Honeycomb or higher to use ActionBar APIs
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+        	// Show the Up button in the action bar.
+        	getActionBar().setDisplayHomeAsUpEnabled(true);
+        }	
     }
+	
+	public void save_to_db(Note new_note) {
+		note_db.insert_note(new_note.subject, new_note.note_date);
+		
+		note_db.close();
+	}
+
 	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

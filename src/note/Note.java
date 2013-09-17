@@ -21,6 +21,7 @@ public class Note {
 	}
 	
 	/* Use to change the date */
+	// TODO
 	public void set_date() {
 
 	}
