@@ -37,5 +37,11 @@ http://www.gnu.org/licenses/gpl-2.0.html -->
         android:layout_height="wrap_content"
         android:hint="@string/edit_content"
         android:inputType="textAutoCorrect|textMultiLine" />
+    <Button 
+        android:id="@+id/save_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="save_content"
+        android:text="@string/save_content"/>
 
 </LinearLayout>

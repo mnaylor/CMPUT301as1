@@ -8,6 +8,7 @@
 package mnaylor.as1;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 
 import mnaylor.db.Constants;
 import mnaylor.db.Db;
@@ -25,13 +26,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends ListActivity {
-
-	public final static String EXTRA_MESSAGE = "mnaylor.as1.MESSAGE";
+	public final static String EXTRA_SUBJECT = "mnaylor.as1.SUBJECT";
+	public final static String EXTRA_CONTENTS = "mnaylor.as1.CONTENTS";
+	public final static String EXTRA_DATE = "mnaylor.as1.DATE";
+	public final static String EXTRA_ID = "mnaylor.as1.ID";
+	
 	public Db note_db;
 	NoteAdapter adapter;
+	private ArrayList<Note> notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,13 +79,12 @@ public class MainActivity extends ListActivity {
     	Intent intent = new Intent(this, NewNoteActivity.class);
     	EditText editText = (EditText) findViewById(R.id.edit_message);
     	String subject = editText.getText().toString();
-    	intent.putExtra(EXTRA_MESSAGE, subject);
+    	intent.putExtra(EXTRA_SUBJECT, subject);
     	startActivity(intent);
     }
     
     private class NoteAdapter extends BaseAdapter {
     	private LayoutInflater mInflater;
-    	private ArrayList<Note> notes;
     	
     	public NoteAdapter(Context context) {
     		mInflater = LayoutInflater.from(context);
@@ -89,7 +94,7 @@ public class MainActivity extends ListActivity {
     	
     	@SuppressWarnings("deprecation")
 		public void getdata(){
-    		Cursor c = note_db.get_notes();
+    		Cursor c = Db.get_notes();
     		startManagingCursor(c);
     	
     		if(c.moveToFirst()){
@@ -99,9 +104,11 @@ public class MainActivity extends ListActivity {
     				String content =
     						c.getString(c.getColumnIndex(Constants.CONTENT));
     				String date = c.getString(c.getColumnIndex(Constants.DATE));
-    				Note temp = new Note(title);
-    				temp.set_all(title, content, date);
+    				int id = c.getInt(c.getColumnIndex(Constants.NOTE_ID));
+    				
+    				Note temp = new Note(title, content, date, id);
     				notes.add(temp);
+    				
     			} while(c.moveToNext());
     		}
     	}
@@ -137,5 +144,18 @@ public class MainActivity extends ListActivity {
     		TextView mSubject;
     		TextView mDate;
     	}
+    }
+    
+    @Override 
+    public void onListItemClick(ListView l, View v, int position, long id) {
+    	Note selected;
+    	selected = notes.get(position);
+    	
+    	Intent intent = new Intent(this, NewNoteActivity.class);
+    	intent.putExtra(EXTRA_SUBJECT, selected.get_subject());
+    	intent.putExtra(EXTRA_CONTENTS, selected.get_contents());
+    	intent.putExtra(EXTRA_DATE,  selected.get_date());
+    	intent.putExtra(EXTRA_ID, selected.get_id().toString());
+    	startActivity(intent);
     }
 }

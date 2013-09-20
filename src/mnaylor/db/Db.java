@@ -57,5 +57,23 @@ public class Db {
 							null, null, null, null);
 		return c;
 	}
+	
+	public long update_note(String id, String subject, String content, String date) {
+		try {
+			ContentValues values = new ContentValues();
+			values.put(Constants.SUBJECT, subject);
+			values.put(Constants.CONTENT, content);
+			values.put(Constants.DATE, date);
+			String whereClause = "note_id = " + id;
+			
+			db.update(Constants.TABLE_NAME, values, whereClause, null);
+			return 0;
+		}
+		catch(SQLiteException ex) {
+			Log.v("Update table exception caught", ex.getMessage());
+			return -1;
+		}
+		
+	}
 
 }
