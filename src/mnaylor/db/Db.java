@@ -75,5 +75,16 @@ public class Db {
 		}
 		
 	}
+	public long delete_note(String id) {
+		try {
+			String whereClause = "note_id = " + id;
+			db.delete(Constants.TABLE_NAME, whereClause, null);
+			return 0;
+		}
+		catch(SQLiteException ex) {
+			Log.v("Delete row exception caught", ex.getMessage());
+			return -1;
+		}
+	}
 
 }

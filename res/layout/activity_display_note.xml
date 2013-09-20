@@ -11,6 +11,13 @@ http://www.gnu.org/licenses/gpl-2.0.html -->
     android:orientation="vertical"
     tools:context=".NewNoteActivity" >
 
+    <Button
+        android:id="@+id/delete_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="delete_content"
+        android:text="@string/delete_content" />
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -37,6 +44,7 @@ http://www.gnu.org/licenses/gpl-2.0.html -->
         android:layout_height="wrap_content"
         android:hint="@string/edit_content"
         android:inputType="textAutoCorrect|textMultiLine" />
+
     <Button 
         android:id="@+id/save_content"
         android:layout_width="wrap_content"

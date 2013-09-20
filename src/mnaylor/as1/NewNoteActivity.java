@@ -111,5 +111,15 @@ public class NewNoteActivity extends Activity {
     	Intent intent = new Intent(this, MainActivity.class);
     	startActivity(intent);
     }
-
+    
+    public void delete_content(View view) {
+    	String id = new_note.get_id().toString();
+    	
+    	note_db.open();
+    	note_db.delete_note(id);
+    	note_db.close();
+    	
+    	Intent intent = new Intent(this, MainActivity.class);
+    	startActivity(intent);
+    }
 }
