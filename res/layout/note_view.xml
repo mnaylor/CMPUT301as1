@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content"
+	android:layout_height="wrap_content" 
+	android:orientation="vertical"
+	android:layout_alignLeft="@+id/name"
+	android:layout_below="@+id/name"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:padding="12dip">
+
+	<TextView
+	    android:id="@+id/note_subject"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true"
+	    android:text="Note Subject "
+	    android:textSize="16dip"
+	    android:textStyle="bold" />
+
+	<TextView
+	    android:id="@+id/date_text"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/note_subject"
+	    android:text="Date Recorded"
+	    android:textSize="14dip" />
+
+</RelativeLayout>

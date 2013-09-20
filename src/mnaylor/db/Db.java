@@ -15,7 +15,7 @@ import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
 public class Db {
-	private SQLiteDatabase db;
+	private static SQLiteDatabase db;
 	private final Context context;
 	private final DbHelper dbhelper;
 	
@@ -52,7 +52,7 @@ public class Db {
 		}
 	}
 	
-	public Cursor get_notes() {
+	public static Cursor get_notes() {
 		Cursor c = db.query(Constants.TABLE_NAME, null, null,
 							null, null, null, null);
 		return c;
