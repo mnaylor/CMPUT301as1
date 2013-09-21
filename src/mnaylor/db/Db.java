@@ -54,7 +54,7 @@ public class Db {
 	
 	public static Cursor get_notes() {
 		Cursor c = db.query(Constants.TABLE_NAME, null, null,
-							null, null, null, null);
+							null, null, null, Constants.DATE + " DESC");
 		return c;
 	}
 	

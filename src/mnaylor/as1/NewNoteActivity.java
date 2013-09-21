@@ -9,21 +9,56 @@ package mnaylor.as1;
 
 import mnaylor.db.Db;
 import note.Note;
+import note.Stats;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class NewNoteActivity extends Activity {
 	Db note_db;
 	Note new_note;
+	EditText subject;
+	EditText content;
+	EditText date;
+	
+    TextWatcher text_count = (new TextWatcher() {
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			content = (EditText) findViewById(R.id.edit_content);
+			TextView stat_display = (TextView) findViewById(R.id.content_stat);
+			
+			// update stats
+			Stats stat_obj = new Stats(content.getText().toString());
+			stat_display.setText("Character count = " + stat_obj.char_count + 
+								"\n Word count = " + stat_obj.word_count);
+			// save changes
+			save_content();
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+			// TODO Auto-generated method stub	
+		}
+    });
 	
 	@SuppressLint("New API")
 	@Override
@@ -34,32 +69,34 @@ public class NewNoteActivity extends Activity {
         
         // Get the subject from the intent
         Intent intent = getIntent();
-        String subject = intent.getStringExtra(MainActivity.EXTRA_SUBJECT);
-        String date = intent.getStringExtra(MainActivity.EXTRA_DATE);
-        String content = intent.getStringExtra(MainActivity.EXTRA_CONTENTS);
+        String subject_raw = intent.getStringExtra(MainActivity.EXTRA_SUBJECT);
+        String date_raw = intent.getStringExtra(MainActivity.EXTRA_DATE);
+        String content_raw = intent.getStringExtra(MainActivity.EXTRA_CONTENTS);
         String id = intent.getStringExtra(MainActivity.EXTRA_ID);
         
         if (id == null) {
-        	new_note = new Note(subject);
+        	new_note = new Note(subject_raw);
             save_to_db(new_note);
-            note_db.close();
+            System.out.println(new_note.note_id);
         }
         else {
         	int id_int = Integer.parseInt(id);
-        	new_note = new Note(subject, content, date, id_int);
+        	new_note = new Note(subject_raw, content_raw, date_raw, id_int);
         }
         	
-
         // Set the text view as the activity layout
         setContentView(R.layout.activity_display_note);
 
         // Display subject and date
-        EditText subject_line = (EditText) findViewById(R.id.subject);
-        subject_line.setText(new_note.subject);
-        EditText date_line = (EditText) findViewById(R.id.date);
-        date_line.setText(new_note.note_date);
-        EditText content_line = (EditText) findViewById(R.id.edit_content);
-        content_line.setText(new_note.contents);
+        subject = (EditText) findViewById(R.id.subject);
+        subject.setText(new_note.subject);
+        date = (EditText) findViewById(R.id.date);
+        date.setText(new_note.note_date);
+        
+        // set up ability to get char/word counts for content		
+        content = (EditText) findViewById(R.id.edit_content);
+        content.addTextChangedListener(text_count);
+        content.setText(new_note.contents);
         
         // Make sure we're running on Honeycomb or higher to use ActionBar APIs
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -69,12 +106,10 @@ public class NewNoteActivity extends Activity {
     }
 	
 	public void save_to_db(Note new_note) {
-		note_db.insert_note(new_note.subject, new_note.note_date);
-		
-		note_db.close();
+		long new_id = note_db.insert_note(new_note.subject, new_note.note_date);
+		new_note.set_id((int) new_id);
 	}
 
-	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
@@ -93,23 +128,18 @@ public class NewNoteActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
     
-    public void save_content(View view) {
-    	EditText subject = (EditText) findViewById(R.id.subject);
-    	EditText content = (EditText) findViewById(R.id.edit_content);
-    	EditText date = (EditText) findViewById(R.id.date);
+    public void save_content() {
+    	subject = (EditText) findViewById(R.id.subject);
+    	content = (EditText) findViewById(R.id.edit_content);
+    	date = (EditText) findViewById(R.id.date);
     	String id = new_note.get_id().toString();
     	
-    	System.out.println("id = " + id);
-    	System.out.println("subject = " + subject.getText().toString());
-    	System.out.println("content = " + content.getText().toString());
-    	System.out.println("date = " + date.getText());
     	note_db.open();
     	note_db.update_note(id, subject.getText().toString(),
     						content.getText().toString(), 
     						date.getText().toString());
+    	System.out.println("saving here");
     	note_db.close();
-    	Intent intent = new Intent(this, MainActivity.class);
-    	startActivity(intent);
     }
     
     public void delete_content(View view) {
@@ -119,6 +149,7 @@ public class NewNoteActivity extends Activity {
     	note_db.delete_note(id);
     	note_db.close();
     	
+    	// go to main page
     	Intent intent = new Intent(this, MainActivity.class);
     	startActivity(intent);
     }

@@ -28,6 +28,10 @@ public class Note {
 		this.contents = new_contents;
 	}
 	
+	public void set_id(int id) {
+		this.note_id = id;
+	}
+	
 	public void set_all(String subject, String contents, String date, int id) {
 		this.subject = subject;
 		this.contents = contents;

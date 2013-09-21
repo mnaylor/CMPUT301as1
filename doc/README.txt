@@ -7,9 +7,6 @@ The program allows for the entry of text, and the display of text in
 another view.  It also implements a simple action bar.
 
 TODO:
-- display notes with newest first
-- click note to get content/delete
 - save notes - automatic save
-- delete notes
 - add note stats to actionbar
 

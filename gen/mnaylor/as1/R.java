@@ -28,6 +28,7 @@ public final class R {
         public static final int RelativeLayout1=0x7f080006;
         public static final int action_search=0x7f08000d;
         public static final int action_settings=0x7f08000c;
+        public static final int content_stat=0x7f080005;
         public static final int date=0x7f080003;
         public static final int date_text=0x7f08000b;
         public static final int delete_content=0x7f080000;
@@ -35,7 +36,6 @@ public final class R {
         public static final int edit_message=0x7f080007;
         public static final int name=0x7f080009;
         public static final int note_subject=0x7f08000a;
-        public static final int save_content=0x7f080005;
         public static final int subject=0x7f080002;
         public static final int textView1=0x7f080001;
     }

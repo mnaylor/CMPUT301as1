@@ -77,9 +77,11 @@ public class MainActivity extends ListActivity {
     /** Called when the user clicks the new message button */
     public void newMessage(View view) {
     	Intent intent = new Intent(this, NewNoteActivity.class);
+    	
     	EditText editText = (EditText) findViewById(R.id.edit_message);
     	String subject = editText.getText().toString();
     	intent.putExtra(EXTRA_SUBJECT, subject);
+    	
     	startActivity(intent);
     }
     
