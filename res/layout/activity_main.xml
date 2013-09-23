@@ -31,12 +31,18 @@ http://www.gnu.org/licenses/gpl-2.0.html
         android:layout_alignParentTop="true"
         android:onClick="newMessage"
         android:text="@string/button_new" />
+    
+    <TextView
+        android:id="@+id/num_entries"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Button_new" />
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/Button_new"
+        android:layout_below="@+id/num_entries"
         android:dividerHeight="1px" >
 
     </ListView>

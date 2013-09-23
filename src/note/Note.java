@@ -2,6 +2,7 @@ package note;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class Note {
 	public String subject;
@@ -12,8 +13,9 @@ public class Note {
 	/* Create a note by declaring a subject*/
 	public Note(String new_subject) {
 		this.subject = new_subject;
-		
-		SimpleDateFormat sdf = new SimpleDateFormat( "yyyy/MM/dd" ); 
+
+		SimpleDateFormat sdf = new SimpleDateFormat( "yyyy/MM/dd, kk:mm:ss" );
+		sdf.setTimeZone(TimeZone.getTimeZone("Canada/Mountain"));
 		this.note_date = sdf.format(new Date());
 	}
 	// overloaded constructor

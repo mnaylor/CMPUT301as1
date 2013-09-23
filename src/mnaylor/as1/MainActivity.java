@@ -8,7 +8,6 @@
 package mnaylor.as1;
 
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 
 import mnaylor.db.Constants;
 import mnaylor.db.Db;
@@ -41,14 +40,24 @@ public class MainActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+    	super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+    
+    @Override
+    protected void onStart() {
+    	super.onStart();
         note_db = new Db(this);
         note_db.open();
+        
+        EditText editText = (EditText) findViewById(R.id.edit_message);
+        editText.setText("");
         
         adapter = new NoteAdapter(this);
         this.setListAdapter(adapter);
         
-    	super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        TextView num_entries = (TextView) findViewById(R.id.num_entries);
+        num_entries.setText("Entry count = " + adapter.getCount());
     }
     
     @Override

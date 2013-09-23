@@ -77,7 +77,6 @@ public class NewNoteActivity extends Activity {
         if (id == null) {
         	new_note = new Note(subject_raw);
             save_to_db(new_note);
-            System.out.println(new_note.note_id);
         }
         else {
         	int id_int = Integer.parseInt(id);
@@ -90,8 +89,10 @@ public class NewNoteActivity extends Activity {
         // Display subject and date
         subject = (EditText) findViewById(R.id.subject);
         subject.setText(new_note.subject);
+        subject.addTextChangedListener(text_count);
         date = (EditText) findViewById(R.id.date);
         date.setText(new_note.note_date);
+        date.addTextChangedListener(text_count);
         
         // set up ability to get char/word counts for content		
         content = (EditText) findViewById(R.id.edit_content);
@@ -138,7 +139,6 @@ public class NewNoteActivity extends Activity {
     	note_db.update_note(id, subject.getText().toString(),
     						content.getText().toString(), 
     						date.getText().toString());
-    	System.out.println("saving here");
     	note_db.close();
     }
     

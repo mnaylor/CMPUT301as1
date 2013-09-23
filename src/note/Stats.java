@@ -16,6 +16,9 @@ public class Stats {
 	}
 	
 	private int get_word_count() {
+		if (this.contents.length() == 0) {
+			return 0;
+		}
 		String[] temp = this.contents.split(" ");
 		return temp.length;
 	}

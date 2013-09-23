@@ -6,7 +6,6 @@ All code comes directly from the tutorial.
 The program allows for the entry of text, and the display of text in
 another view.  It also implements a simple action bar.
 
-TODO:
-- save notes - automatic save
+TODO: 
 - add note stats to actionbar
-
+- fix ordering for same day created notes (add time?)
