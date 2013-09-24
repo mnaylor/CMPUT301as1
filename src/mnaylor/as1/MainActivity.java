@@ -76,13 +76,15 @@ public class MainActivity extends ListActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
+    	Intent intent;
         switch (item.getItemId()) {
             case R.id.top_words:
-            	Intent intent = new Intent(this, TopWordsActivity.class);
+            	intent = new Intent(this, TopWordsActivity.class);
             	startActivity(intent);
                 return true;
             case R.id.word_diagram:
-                // openSettings();
+                intent = new Intent(this, HistogramActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

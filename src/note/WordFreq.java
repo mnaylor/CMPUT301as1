@@ -39,5 +39,35 @@ public class WordFreq {
 			} while(c.moveToNext());
 		}
 	}
+
+	public ArrayList map_to_arraylist(HashMap<String, Integer> map) {
+		ArrayList list = new ArrayList<ListFormat>();
+		
+		for (String entry: map.keySet()) {
+			ListFormat item = new ListFormat(entry, map.get(entry));
+			list.add(item);
+		}
+		Collections.sort(list);
+		return list;
+	}
+	
+	private class ListFormat implements Comparable {
+		String word;
+		Integer freq;
+		
+		public ListFormat(String word, Integer freq) {
+			this.word = word;
+			this.freq = freq;
+		}
+
+		@Override
+		public int compareTo(Object arg0) {
+			if (arg0 instanceof ListFormat) {
+				ListFormat lf = (ListFormat) arg0;
+				return this.freq - lf.freq;
+			}
+			else { return 0; }
+		}
+	}
 }
 

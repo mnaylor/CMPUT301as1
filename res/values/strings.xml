@@ -10,6 +10,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_display_message">My Message</string>
     <string name="title_activity_top_words">Top 100 Words</string>
+    <string name="title_histogram">Word Cloud</string>
     <string name="top_words">Top 100 Words</string>
     <string name="word_diagram">Word Diagram</string>
     <string name="save_content">Save</string>

@@ -49,6 +49,15 @@ http://www.gnu.org/licenses/gpl-2.0.html -->
                 android:value="mnaylor.as1.MainActivity" />
         </activity>
         
+        <activity
+            android:name="mnaylor.as1.HistogramActivity"
+            android:label="@string/title_histogram"
+            android:parentActivityName="mnaylor.as1.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mnaylor.as1.MainActivity" />
+        </activity>
+        
     </application>
 
 </manifest>
