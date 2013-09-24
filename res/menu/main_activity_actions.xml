@@ -8,13 +8,12 @@ Published under GPL-V2
 http://www.gnu.org/licenses/gpl-2.0.html -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <!-- Search, should appear as action button -->
-    <item android:id="@+id/action_search"
-          android:title="@string/action_search"
+    <item android:id="@+id/top_words"
+          android:title="@string/top_words"
           android:showAsAction="never" />
-    <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
+
+    <item android:id="@+id/word_diagram"
+          android:title="@string/word_diagram"
           android:showAsAction="never" />    
 
 </menu>

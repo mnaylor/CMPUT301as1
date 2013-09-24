@@ -8,7 +8,6 @@
 package mnaylor.as1;
 
 import java.util.ArrayList;
-
 import mnaylor.db.Constants;
 import mnaylor.db.Db;
 import note.Note;
@@ -61,6 +60,12 @@ public class MainActivity extends ListActivity {
     }
     
     @Override
+    protected void onStop() {
+    	super.onStop();
+    	note_db.close();
+    }
+    
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
@@ -72,10 +77,11 @@ public class MainActivity extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.action_search:
-                // openSearch();
+            case R.id.top_words:
+            	Intent intent = new Intent(this, TopWordsActivity.class);
+            	startActivity(intent);
                 return true;
-            case R.id.action_settings:
+            case R.id.word_diagram:
                 // openSettings();
                 return true;
             default:

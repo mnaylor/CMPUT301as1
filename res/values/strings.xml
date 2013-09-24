@@ -9,8 +9,9 @@
     <string name="button_new">Create Note</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_display_message">My Message</string>
-    <string name="action_search">Search</string>
-    <string name="action_settings">Settings</string>
+    <string name="title_activity_top_words">Top 100 Words</string>
+    <string name="top_words">Top 100 Words</string>
+    <string name="word_diagram">Word Diagram</string>
     <string name="save_content">Save</string>
     <string name="delete_content">Delete</string>
 </resources>
