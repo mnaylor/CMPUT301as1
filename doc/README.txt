@@ -10,5 +10,4 @@ Requires Android 3.0 (API level 11) or above.
 
 TODO: 
 - add note stats to actionbar
-- sort list of words according to frequency. Display no more than 100.
 - see a word cloud or a word histogram of common words
