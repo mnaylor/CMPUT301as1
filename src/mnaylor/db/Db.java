@@ -126,7 +126,6 @@ public class Db {
 					if (freq == null)
 						temp.put(word, 1);
 					else temp.put(word, freq + 1);
-					System.out.println("word: " + word + " freq: " + temp.get(word));
 				}
 			} while(c.moveToNext());
 		}

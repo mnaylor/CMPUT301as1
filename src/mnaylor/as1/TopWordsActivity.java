@@ -80,8 +80,6 @@ public class TopWordsActivity extends ListActivity{
 		public int compareTo(Object arg0) {
 			if (arg0 instanceof ListFormat) {
 				ListFormat lf = (ListFormat) arg0;
-				System.out.println("first=" + this.freq);
-				System.out.println("second=" + lf.freq);
 				return this.freq - lf.freq;
 			}
 			else { return 0; }
