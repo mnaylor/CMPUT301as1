@@ -1,3 +1,17 @@
+/** 
+ * Android note taking application.
+ * Copyright (C) 2013  Michelle Naylor
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+*/
+
 package note;
 
 import java.text.SimpleDateFormat;
@@ -33,20 +47,6 @@ public class Note {
 	public void set_id(int id) {
 		this.note_id = id;
 	}
-	
-	public void set_all(String subject, String contents, String date, int id) {
-		this.subject = subject;
-		this.contents = contents;
-		this.note_date = date;
-		this.note_id = id;
-	}
-	
-	/* Use to change the date */
-	// TODO
-	public void set_date() {
-
-	}
-	
 	public String get_subject() {
 		return this.subject;
 	}

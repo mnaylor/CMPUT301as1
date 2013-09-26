@@ -1,8 +1,15 @@
-/** Based on Android tutorial published under Creative Commons
-* http://developer.android.com/training/index.html
-* 
-* Published under GPL-V2
-* http://www.gnu.org/licenses/gpl-2.0.html
+/** 
+ * Android note taking application.
+ * Copyright (C) 2013  Michelle Naylor
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
 */
 
 package mnaylor.as1;
@@ -27,12 +34,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+// Class is based on Android tutorial - http://developer.android.com/training/index.html
 public class MainActivity extends ListActivity {
 	public final static String EXTRA_SUBJECT = "mnaylor.as1.SUBJECT";
 	public final static String EXTRA_CONTENTS = "mnaylor.as1.CONTENTS";
 	public final static String EXTRA_DATE = "mnaylor.as1.DATE";
 	public final static String EXTRA_ID = "mnaylor.as1.ID";
-	
 	public Db note_db;
 	NoteAdapter adapter;
 	private ArrayList<Note> notes;

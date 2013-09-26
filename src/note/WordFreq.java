@@ -1,16 +1,29 @@
+/** 
+ * Android note taking application.
+ * Copyright (C) 2013  Michelle Naylor
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+*/
+
 package note;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 
 import mnaylor.db.Db;
 import android.database.Cursor;
 
 public class WordFreq {
 	public Db note_db;
-	public Map<String, Integer> word_freq;
+	public HashMap<String, Integer> word_freq;
 
 	public WordFreq(Db db) {
 		this.note_db = db;
@@ -18,6 +31,10 @@ public class WordFreq {
 		set_word_freq();
 	}
 	
+	public HashMap<String, Integer> getWord_freq() {
+		return word_freq;
+	}
+
 	public void set_word_freq() {
 		Cursor c = note_db.get_contents();
     	Integer freq;
@@ -38,9 +55,9 @@ public class WordFreq {
 			} while(c.moveToNext());
 		}
 	}
-
-	public ArrayList map_to_arraylist(HashMap<String, Integer> map) {
-		ArrayList list = new ArrayList<ListFormat>();
+	
+	public ArrayList<ListFormat> map_to_arraylist(HashMap<String, Integer> map) {
+		ArrayList<ListFormat> list = new ArrayList<ListFormat>();
 		
 		for (String entry: map.keySet()) {
 			ListFormat item = new ListFormat(entry, map.get(entry));

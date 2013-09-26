@@ -1,10 +1,16 @@
-/** Based on Android tutorial published under Creative Commons
-* http://developer.android.com/training/index.html
-* 
-* Published under GPL-V2
-* http://www.gnu.org/licenses/gpl-2.0.html
+/** 
+ * Android note taking application.
+ * Copyright (C) 2013  Michelle Naylor
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
 */
-
 package mnaylor.as1;
 
 import mnaylor.db.Db;
@@ -17,11 +23,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+// Based on Android tutorial - http://developer.android.com/training/index.html
 public class NewNoteActivity extends Activity {
 	Db note_db;
 	Note new_note;
@@ -109,6 +115,7 @@ public class NewNoteActivity extends Activity {
 		new_note.set_id((int) new_id);
 	}
     
+	// called from TextWatcher
     public void save_content() {
     	subject = (EditText) findViewById(R.id.subject);
     	content = (EditText) findViewById(R.id.edit_content);
@@ -122,6 +129,7 @@ public class NewNoteActivity extends Activity {
     	note_db.close();
     }
     
+    // called by pressing delete button
     public void delete_content(View view) {
     	String id = new_note.get_id().toString();
     	
@@ -130,6 +138,5 @@ public class NewNoteActivity extends Activity {
     	note_db.close();
 
     	finish();
-    	//startActivity(intent);
     }
 }

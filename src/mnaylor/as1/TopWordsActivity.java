@@ -1,8 +1,25 @@
+/** 
+ * Android note taking application.
+ * Copyright (C) 2013  Michelle Naylor
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+*/
+
 package mnaylor.as1;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+
+import note.WordFreq;
+
 import mnaylor.db.Db;
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -26,8 +43,9 @@ public class TopWordsActivity extends ListActivity{
     	
     	note_db = new Db(this);
         note_db.open();
-
-        word_freq = note_db.get_word_freq();
+		WordFreq wf = new WordFreq(note_db);
+    	
+        word_freq = wf.getWord_freq();
         word_freq_list = map_to_arraylist(word_freq);
         
         // Source: 
@@ -49,8 +67,9 @@ public class TopWordsActivity extends ListActivity{
         setListAdapter(adapter);
     }
 	
-	public ArrayList map_to_arraylist(HashMap<String, Integer> map) {
-		ArrayList list = new ArrayList<ListFormat>();
+	@SuppressWarnings("unchecked")
+	public ArrayList<ListFormat> map_to_arraylist(HashMap<String, Integer> map) {
+		ArrayList<ListFormat> list = new ArrayList<ListFormat>();
 		
 		for (String entry: map.keySet()) {
 			ListFormat item = new ListFormat(entry, map.get(entry));
@@ -69,9 +88,11 @@ public class TopWordsActivity extends ListActivity{
 			this.word = word;
 			this.freq = freq;
 		}
+
 		public String getWord() {
 			return word;
 		}
+
 		public Integer getFreq() {
 			return freq;
 		}

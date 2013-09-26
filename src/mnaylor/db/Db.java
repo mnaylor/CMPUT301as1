@@ -1,14 +1,18 @@
-/** Based on The Android Developer's Cookbook, Addison-Wesley, 2011
-* Listing 9.9
-* 
-* Published under GPL-V2
-* http://www.gnu.org/licenses/gpl-2.0.html
+/** 
+ * Android note taking application.
+ * Copyright (C) 2013  Michelle Naylor
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
 */
 
 package mnaylor.db;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -17,6 +21,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
+// Based on The Android Developer's Cookbook, Addison-Wesley, 2011 - Listing 9.9
 public class Db {
 	private static SQLiteDatabase db;
 	private final Context context;
@@ -108,28 +113,4 @@ public class Db {
 			return -1;
 		}
 	}
-	// TODO: move somewhere more appropriate
-	// TODO: add test
-	public HashMap<String, Integer> get_word_freq() {
-		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		Cursor c = get_contents();
-    	Integer freq;
-    	
-		if(c.moveToFirst()){
-			do {
-				String[] split_contents = c.getString(0).toString().
-											replaceAll("[^a-zA-Z_ _0-9]", "").
-											split(" ");
-				for (String word: split_contents) {
-					if (word == "") break;
-					freq = temp.get(word);
-					if (freq == null)
-						temp.put(word, 1);
-					else temp.put(word, freq + 1);
-				}
-			} while(c.moveToNext());
-		}
-		return temp;
-	}
-
 }

@@ -1,3 +1,17 @@
+/** 
+ * Android note taking application.
+ * Copyright (C) 2013  Michelle Naylor
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+*/
+
 package mnaylor.db;
 
 import android.content.Context;
@@ -7,6 +21,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+// Based on The Android Developer's Cookbook, Addison-Wesley, 2011 - Listing 9.10
 public class DbHelper extends SQLiteOpenHelper{
 	
     private static final String TEXT_TYPE = " TEXT";
