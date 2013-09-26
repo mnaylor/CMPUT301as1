@@ -18,7 +18,6 @@ public class WordFreq {
 		set_word_freq();
 	}
 	
-	// TODO: add test
 	public void set_word_freq() {
 		Cursor c = note_db.get_contents();
     	Integer freq;

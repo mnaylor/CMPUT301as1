@@ -15,11 +15,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -31,7 +28,6 @@ public class NewNoteActivity extends Activity {
 	EditText subject;
 	EditText content;
 	EditText date;
-	
     TextWatcher text_count = (new TextWatcher() {
 
 		@Override
@@ -74,6 +70,8 @@ public class NewNoteActivity extends Activity {
         String content_raw = intent.getStringExtra(MainActivity.EXTRA_CONTENTS);
         String id = intent.getStringExtra(MainActivity.EXTRA_ID);
         
+        // if note not in db yet, it has no id
+        
         if (id == null) {
         	new_note = new Note(subject_raw);
             save_to_db(new_note);
@@ -110,24 +108,6 @@ public class NewNoteActivity extends Activity {
 		long new_id = note_db.insert_note(new_note.subject, new_note.note_date);
 		new_note.set_id((int) new_id);
 	}
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu items for use in the action bar
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_activity_actions, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case android.R.id.home:
-            NavUtils.navigateUpFromSameTask(this);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
     
     public void save_content() {
     	subject = (EditText) findViewById(R.id.subject);
@@ -148,9 +128,8 @@ public class NewNoteActivity extends Activity {
     	note_db.open();
     	note_db.delete_note(id);
     	note_db.close();
-    	
-    	// go to main page
-    	Intent intent = new Intent(this, MainActivity.class);
-    	startActivity(intent);
+
+    	finish();
+    	//startActivity(intent);
     }
 }
