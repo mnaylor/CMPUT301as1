@@ -1,6 +1,9 @@
 The assignment's apk file is as1.
 In the launcher, the app is called mnaylor Notes.
 
+This project is also available on github at:
+https://github.com/mnaylor/CMPUT301as1
+
 This application allows for the entry, modification, deletion, and
 display of notes containing a subject, date, and content.
 
