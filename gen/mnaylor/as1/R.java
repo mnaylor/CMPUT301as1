@@ -56,6 +56,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f050000;
         public static final int button_new=0x7f050005;
+        public static final int button_top_words=0x7f05000e;
         public static final int date=0x7f050003;
         public static final int delete_content=0x7f05000d;
         public static final int edit_content=0x7f050004;

@@ -15,4 +15,5 @@
     <string name="word_diagram">Word Diagram</string>
     <string name="save_content">Save</string>
     <string name="delete_content">Delete</string>
+    <string name="button_top_words">Top Words</string>
 </resources>
