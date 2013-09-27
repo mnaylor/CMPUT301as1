@@ -67,6 +67,12 @@ public class TopWordsActivity extends ListActivity{
         setListAdapter(adapter);
     }
 	
+    @Override
+    protected void onStop() {
+    	super.onStop();
+    	note_db.close();
+    }
+	
 	@SuppressWarnings("unchecked")
 	public ArrayList<ListFormat> map_to_arraylist(HashMap<String, Integer> map) {
 		ArrayList<ListFormat> list = new ArrayList<ListFormat>();

@@ -48,6 +48,12 @@ public class HistogramActivity extends Activity {
         word_cloud.setText(set_span_text(word_freq));
 	}
 	
+    @Override
+    protected void onStop() {
+    	super.onStop();
+    	note_db.close();
+    }
+	
 	// Source: 
 	// http://stackoverflow.com/questions/16060991/why-doesnt-my-text-show-up-with-style-when-using-spannablestringbuilder
 	private SpannableStringBuilder set_span_text(HashMap<String, Integer> word_freq) {

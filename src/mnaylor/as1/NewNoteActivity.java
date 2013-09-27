@@ -66,9 +66,15 @@ public class NewNoteActivity extends Activity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+    }
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+
         note_db = new Db(this);
         note_db.open();
-        
         // Get the subject from the intent
         Intent intent = getIntent();
         String subject_raw = intent.getStringExtra(MainActivity.EXTRA_SUBJECT);
@@ -77,7 +83,6 @@ public class NewNoteActivity extends Activity {
         String id = intent.getStringExtra(MainActivity.EXTRA_ID);
         
         // if note not in db yet, it has no id
-        
         if (id == null) {
         	new_note = new Note(subject_raw);
             save_to_db(new_note);
@@ -102,12 +107,12 @@ public class NewNoteActivity extends Activity {
         content = (EditText) findViewById(R.id.edit_content);
         content.addTextChangedListener(text_count);
         content.setText(new_note.contents);
-        
-        // Make sure we're running on Honeycomb or higher to use ActionBar APIs
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-        	// Show the Up button in the action bar.
-        	getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+	}
+	
+    @Override
+    protected void onStop() {
+    	super.onStop();
+    	note_db.close();
     }
 	
 	public void save_to_db(Note new_note) {
